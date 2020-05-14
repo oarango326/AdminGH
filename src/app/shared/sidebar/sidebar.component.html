@@ -25,29 +25,35 @@
 
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
+                <li class="nav-item has-treeview" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['/dashboard']">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
                             <i class="right fas fa-angle-right"></i>
                         </p>
                     </a>
-                    <a href="#" class="nav-link">
+                </li>
+                <li class="nav-item has-treeview" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['/locales']">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                             Locales
                             <i class="right fas fa-angle-right"></i>
                         </p>
                     </a>
-                    <a href="#" class="nav-link">
+                </li>
+                <li class="nav-item has-treeview" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['/insumos']">
                         <i class="nav-icon fas fa-bread-slice"></i>
                         <p>
                             Insumos
                             <i class="right fas fa-angle-right"></i>
                         </p>
                     </a>
-                    <a href="#" class="nav-link">
+                </li>
+                <li class="nav-item has-treeview" routerLinkActive="active">
+                    <a class="nav-link" [routerLink]="['/proveedores']">
                         <i class="nav-icon fas fa-address-book"></i>
                         <p>
                             Proveedores

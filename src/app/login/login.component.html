@@ -8,24 +8,45 @@
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">Inicia sesión para comenzar tu sesión</p>
-
-            <form action="" method="post">
+            <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+                <span *ngIf="form.submitted && form.controls['email'].errors"
+                        class="text-danger">El correo es obligatorio</span>
                 <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="email"
+                           class="form-control"
+                           name="email"
+                           [class.is-invalid]="email.invalid && email.touched"
+                           [ngModel]="usuario.email"
+                           email
+                           required
+                           placeholder="Email"
+                           #email="ngModel">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
                         </div>
                     </div>
                 </div>
+                <span *ngIf="form.submitted && form.controls['password'].errors"
+                        class="text-danger">Al menos 6 letras</span>
                 <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Contraseña">
+                    <input type="password"
+                           class="form-control"
+                           name="password"
+                           [class.is-invalid]="password.invalid && password.touched"
+                           [ngModel]="usuario.password"
+                           required
+                           minlength="6"
+                           placeholder="Contraseña"
+                           #password="ngModel">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
                         </div>
                     </div>
+
                 </div>
+
                 <div class="row">
                     <div class="col-8">
                         <div class="icheck-primary">
