@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-body">
+        <div [ngClass]="'mb-3'" class="text-right">
+            <button class="btn btn-outline-danger" routerLink="/locales" >
+                <i class="fa fa-arrow-left fa-lg p-2"></i>
+                Volver
+            </button>
+        </div>
+        <div class="navbar  bg-light border">
+            <ul class="nav nav-pills ">
+                <li class="nav-item">
+                    <a  class="nav-link"  routerLinkActive="active"  routerLink="info-local" >Detalles</a>
+                </li>
+                <li class="nav-item" >
+                    <a  class="nav-link" routerLinkActive="active" [routerLink]="['mesas']">Mesas</a>
+                </li>
+                <li class="nav-item" >
+                    <a  class="nav-link" routerLinkActive="active" [routerLink]="['cajas']"  >Cajas</a>
+                </li>
+                <li class="nav-item" >
+                    <a  class="nav-link">Platos</a>
+                </li>
+            </ul>
+        </div>
+        <div class="border p-3">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

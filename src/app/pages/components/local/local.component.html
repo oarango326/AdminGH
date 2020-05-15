@@ -1,0 +1,87 @@
+<div class="card">
+    <div class="card-body">
+    <div [ngClass]="'mb-3'" class="justify-content-between d-flex " *ngIf="modo==='add'">
+        <h2>Nuevo Local</h2>
+        <button class="btn btn-outline-danger" routerLink="/locales" >
+            <i class="fa fa-arrow-left fa-lg p-2"></i><
+            Volver
+        </button>
+    </div>
+    <form autocomplete="off" [formGroup]="form"  (ngSubmit)="modo==='add'?add(form):update(form)">
+        <div class="justify-content-center">
+            <div class="form-group row" *ngIf="modo==='edit'">
+                <label  class="col-sm-2 col-form-label">Local ID</label>
+                <div class="col-sm-2">
+                    <input type="text"
+                           class="form-control"
+                           id="localId"
+                           name="localId"
+                           formControlName="localId"
+                            readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm">
+                    <input type="text"
+                           class="form-control"
+                           id="nombre"
+                           name="nombreLocal"
+                           placeholder="Nombre"
+                           formControlName="nombreLocal"
+                           [class.is-invalid]="nombreNovalido">
+                    <small *ngIf="nombreNovalido" class="text-danger">Ingrese 5 letras</small>
+                </div>
+            </div>
+            <div class="form-group row" >
+                <label class="col-sm-2 col-form-label">Direccion</label>
+                <div class="col-sm">
+                    <input type="text"
+                           class="form-control "
+                           id="direccion"
+                           name="direccionLocal"
+                           placeholder="Direccion"
+                           formControlName="direccionLocal"
+                           [class.is-invalid]="direccionNovalido">
+                    <small *ngIf="direccionNovalido" class="text-danger">Ingrese 5 letras</small>
+                </div>
+            </div>
+            <div class="form-group row">
+
+                <label for="" class="col-sm-2 col-form-label">Telefono</label>
+                <div class="col-sm">
+                    <input type="text"
+                           class="form-control"
+                           id="telefono"
+                           name="telefonoLocal"
+                           placeholder="Telefono"
+                           maxlength="9"
+                           formControlName="telefonoLocal"
+                           [class.is-invalid]="telefonoNovalido">
+                    <small *ngIf="telefonoNovalido" class="text-danger">formato de telefono incorrecto</small>
+                </div>
+            </div>
+        </div>
+        <div class="text-right">
+            <button type="submit" class="btn btn-outline-primary" *ngIf="modo==='add'">
+                <i class="fa fa-save fa-lg p-2"></i>
+                Guardar
+            </button>
+            <button type="submit" class="btn btn-outline-primary" *ngIf="modo==='edit'">
+                <i class="fa fa-spinner fa-lg p-2"></i>
+                Actualizar
+            </button>
+        </div>
+    </form>
+
+        <!--  <hr>
+           <pre>
+                 estado del formulario : {{form.valid}}
+                 <br>
+                 Estatus:  {{form.status}}
+             </pre>
+             <pre>
+             {{form.value| json}}
+             </pre> -->
+</div>
+</div>
