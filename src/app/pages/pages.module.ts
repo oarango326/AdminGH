@@ -6,22 +6,36 @@ import {PagesComponent} from './pages.component';
 // paginas
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {LocalesComponent} from './locales/locales.component';
+import { LocalComponent } from './components/local/local.component';
+import { ProveedoresComponent } from './proveedores/proveedores.component';
+import { InsumosComponent } from './insumos/insumos.component';
+import { InfoLocalComponent } from './info-local/info-local.component';
+import { MesasComponent } from './mesas/mesas.component';
+import { CajasComponent } from './cajas/cajas.component';
+import { AlmacenesComponent } from './almacenes/almacenes.component';
 
 // rutas
 import {PAGES_ROUTES} from './pages.routes';
 
 // modulo Secundario
 import {SharedModule} from '../shared/shared.module';
-import { ProveedoresComponent } from './proveedores/proveedores.component';
-import { InsumosComponent } from './insumos/insumos.component';
+
 
 // servicios
-import {LocalesService} from '../services/locales/locales.service';
-import { LocalComponent } from './components/local/local.component';
+
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { InfoLocalComponent } from './info-local/info-local.component';
-import { MesasComponent } from './mesas/mesas.component';
-import { CajasComponent } from './cajas/cajas.component';
+import { AlmacenComponent } from './components/almacen/almacen.component';
+import { ProveedorComponent } from './components/proveedor/proveedor.component';
+import { InsumoComponent } from './components/insumo/insumo.component';
+import { PlatosComponent } from './platos/platos.component';
+import { ComprasComponent } from './compras/compras.component';
+import { CobrosComponent } from './cobros/cobros.component';
+import { PagosComponent } from './pagos/pagos.component';
+import { ComandasComponent } from './comandas/comandas.component';
+import { InsumosLocalComponent } from './insumos-local/insumos-local.component';
+import {NgbModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
+import { CompraComponent } from './components/compra/compra.component';
+
 
 @NgModule({
   declarations: [
@@ -33,10 +47,22 @@ import { CajasComponent } from './cajas/cajas.component';
     LocalComponent,
     InfoLocalComponent,
     MesasComponent,
-    CajasComponent
+    CajasComponent,
+    AlmacenesComponent,
+    AlmacenComponent,
+    ProveedorComponent,
+    InsumoComponent,
+    PlatosComponent,
+    ComprasComponent,
+    CobrosComponent,
+    PagosComponent,
+    ComandasComponent,
+    InsumosLocalComponent,
+    CompraComponent
   ],
   exports: [
     PagesComponent,
+    AlmacenesComponent,
     DashboardComponent,
     LocalesComponent,
       ProveedoresComponent,
@@ -46,13 +72,15 @@ import { CajasComponent } from './cajas/cajas.component';
       MesasComponent,
       CajasComponent
   ],
-    imports: [
-        CommonModule,
-        SharedModule,
-        PAGES_ROUTES,
-        ReactiveFormsModule,
-        FormsModule
-    ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    PAGES_ROUTES,
+    ReactiveFormsModule,
+    FormsModule,
+    NgbTooltipModule,
+    NgbModule
+  ],
   providers: [
   ],
 })

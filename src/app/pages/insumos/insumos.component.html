@@ -2,7 +2,7 @@
     <div *ngIf="muestra">
         <div class="card-header d-flex justify-content-between">
             <div class="col-6">
-                <h1 class="card-title">Insumos</h1>
+                <h1 class="card-title"></h1>
             </div>
             <div class="col-6 text-right">
                 <a class="btn btn-primary" ngbTooltip="Nuevo local" routerLink="/insumos/nuevo-insumo" >
@@ -43,6 +43,8 @@
             </table>
             <app-norecords *ngIf="!cargando && insumos.length===0"></app-norecords>
             <app-loading *ngIf="cargando"></app-loading>
+        </div>
+        <div class="card-footer">
         </div>
     </div>
 </div>

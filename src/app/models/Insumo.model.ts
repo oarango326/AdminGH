@@ -11,7 +11,7 @@ export class InsumoModel {
     disponibleMenu: boolean;
 
     constructor() {
-        this.unidadMedida =  null;
+        this.unidadMedida =  unidadMedidaEnum.unidad;
         this.stockActual = 0;
         this.ultimoCosto = 0;
         this.stockMin = 0;

@@ -1,0 +1,168 @@
+<div class="card">
+    <div class="card-body">
+        <div [ngClass]="'mb-3'" class="justify-content-between d-flex " >
+            <h2 *ngIf="modo==='add'">Nueva Compra</h2>
+            <h2 *ngIf="modo==='edit'"> Actualizar Compra</h2>
+            <button class="btn btn-outline-danger" routerLink="/compras" >
+                <i class="fa fa-arrow-left fa-lg p-2"></i><
+                Volver
+            </button>
+        </div>
+            <form autocomplete="off" [formGroup]="form" (ngSubmit)="modo==='edit'? update(form):add(form)">
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label >ID</label>
+                        <input type="text" class="form-control" readonly
+                            formControlName="compraId">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label >Proveedor</label>
+                        <select class="form-control" id="proveedor" name="proveedor"
+                                formControlName="proveedorId">
+                            <option value="" selected disabled>Seleccione un proveedor</option>
+                            <option *ngFor="let proveedor of proveedores"
+                                    value="{{proveedor.proveedorId}}">{{proveedor.nombreProveedor}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Fecha:</label>
+
+
+                    </div>
+                    <!--<div class="form-group col-md-4">
+                        <label>Fecha</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                            </div>
+                         <input type="text" class="form-control" placeholder="dd/mm/yyyy"
+                                   formControlName="fecha">
+
+
+
+
+
+
+
+
+                        </div>
+                    </div>-->
+                </div>
+                <div class="form-group">
+                    <label for="inputAddress">observacion</label>
+                    <input type="text" class="form-control" id="inputAddress"
+                           placeholder="Observaciones"
+                    formControlName="observacion">
+                </div>
+                <div class="form-row ">
+                    <div class="form-group col ">
+                        <label >Local</label>
+                        <select name="localId" id="" class="form-control" formControlName="localId" (change)="cargaAlmacenes()">
+                            <option value="" selected disabled> Seleccione un Local</option>
+                            <option value="{{local.localId}}" *ngFor="let local of locales, let i = index " >
+                                {{local.nombreLocal}}
+                            </option>
+                        </select >
+                    </div>
+                    <div class="form-group  col ">
+                        <label >Almacen</label>
+                        <select name="localId" class="form-control" formControlName="localId">
+                            <option value="" selected disabled> Seleccione un Almacen</option>
+                            <option value="{{almacen.almacenId}}" *ngFor="let almacen of almacenes">{{almacen.descripcion}}</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group col">
+                        <label >Estado</label>
+                        <input type="text"
+                               class="form-control"
+                               readonly
+                                formControlName="estadoCompra">
+                    </div>
+                    <div class="form-group col">
+                        <label >Monto Compra</label>
+                        <input type="text"
+                               class="form-control text-right"
+                               readonly formControlName="totalCompra">
+                    </div>
+                    <div class="form-group col">
+                        <label>Saldo Pendiente</label>
+                        <input type="text"
+                               class="form-control text-right"
+                               readonly formControlName="saldoPendiente">
+                    </div>
+                </div>
+                <table class="table table-striped" >
+                    <thead class="thead-dark">
+                        <th scope="col">Item</th>
+                        <th scope="col">Insumo</th>
+                        <th scope="col"> Cantidad</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Total</th>
+                        <th scope="col"> </th>
+                    </thead>
+                    <tbody formArrayName="compraDetalle">
+                        <tr *ngFor="let detalle of compraDetalle.controls, let i = index" [formGroupName]="i">
+                            <td class="col-form-label">{{i+1}}</td>
+                            <td>
+                                <select name="insumo" id="insumo"
+                                        class="form-control"
+                                        name="id"
+                                        formControlName="id">
+                                    <option value="" selected disabled>Selecciones Un Insumo</option>
+                                    <option *ngFor="let insumo of insumos"
+                                            value="{{insumo.insumoId}}">{{insumo.nombreInsumo}}</option>
+                                </select>
+                            </td>
+                            <td >
+                                <div class="input-group mb-3">
+
+                                    <input type="number" class="form-control text-sm-right" name="cantidad"
+                                           min="0"
+                                           step="0.25"
+                                           pattern="^\d*(\.\d{0,2})?$"
+                                           placeholder="0,00"
+                                           formControlName="cantidad" >
+
+                                </div>
+                            </td>
+                            <td><input type="number" class="form-control text-sm-right" name="precio"
+                                       min="0"
+                                       step="0.25"
+                                       pattern="^\d*(\.\d{0,2})?$"
+                                       placeholder="0,00"
+                                       formControlName="precio" ></td>
+                            <td><input type="number" class="form-control text-sm-right"
+                                       placeholder="0,00"
+                                       readonly >
+                            </td>
+                            <td>
+                                <button class="btn btn-outline-danger"
+                                        (click)="removeCompraDetalle(i)"><i class="fas fa-minus"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class=" form-row justify-content-end">
+                    <button class="btn btn-outline-success mb-2" type="button" (click)="addCompraDetalle()"><i class="fas fa-plus"></i> Agregar Linea</button>
+                </div>
+                <div class=" form-row justify-content-end">
+                    <button class="btn btn-outline-primary mb-2" type="submit" ><i class="fas fa-save"></i> Guardar</button>
+                </div>
+            </form>
+    </div>
+</div>
+
+<hr>
+<pre>
+  Estado del formulario: {{ form.valid }}
+    <br>
+  Status: {{ form.status }}
+</pre>
+
+<pre>
+
+  {{ form.value | json }}
+
+</pre>

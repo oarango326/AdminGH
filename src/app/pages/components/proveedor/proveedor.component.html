@@ -1,0 +1,86 @@
+
+<div class="card">
+    <div class="card-body">
+        <div [ngClass]="'mb-3'" class="justify-content-between d-flex " >
+            <h2 *ngIf="modo==='add'">Nuevo Proveedor</h2>
+            <h2 *ngIf="modo==='edit'"> Actualizar Proveedor</h2>
+            <button class="btn btn-outline-danger" routerLink="/proveedores" >
+                <i class="fa fa-arrow-left fa-lg p-2"></i><
+                Volver
+            </button>
+        </div>
+    <form autocomplete="off" [formGroup]="form" (ngSubmit)="modo==='edit'? update(form):add(form)">
+        <div class="form-row" *ngIf="modo==='edit'">
+            <div class="form-group col-md-6">
+                <label >ID</label>
+                <input type="text" class="form-control" id="proveedorId" formControlName="proveedorId" readonly>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label >Nombre</label>
+                <input type="text" class="form-control"
+                       id="nombreProveedor"
+                       name="nombreProveedor"
+                       formControlName="nombreProveedor"
+                       [class.is-invalid]="nombreProveedor"
+                       maxlength="50">
+                <small class="text-danger" *ngIf="nombreProveedor">Debe Ingresar un nombre</small>
+            </div>
+            <div class="form-group col-md-6">
+                <label >CIF</label>
+                <input type="text"
+                       class="form-control"
+                       id="cif"
+                       formControlName="cif"
+                       [class.is-invalid]="cifProveedor"
+                       maxlength="9" minlength="9">
+                <small class="text-danger" *ngIf="cifProveedor">Debe Ingresar CIF/NIF/NIE Correcto 9 Caracteres</small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label >Direccion</label>
+            <input type="text"
+                   class="form-control"
+                   id="direccion"
+                   placeholder="Av / Calle / Casa / PISO / #"
+                   formControlName="direccion"
+                   [class.is-invalid]="direccionProveedor">
+            <small class="text-danger" *ngIf="direccionProveedor">Debe Ingresar una Direccion</small>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label >Telefono</label>
+                <input type="text" class="form-control"
+                       name="telefono"
+                       formControlName="telefono"
+                       maxlength="12"
+                       [class.is-invalid]="telefonoProveedor">
+                <small class="text-danger" *ngIf="telefonoProveedor">Debe Ingresar un telefono valido</small>
+            </div>
+            <div class="form-group col-md-6">
+                <label >Email</label>
+                <input type="text"
+                       class="form-control"
+                       name="telefono"
+                       formControlName="email"
+                       [class.is-invalid]="emailProveedor">
+                <small class="text-danger" *ngIf="emailProveedor">Debe Ingresar un Email Valido</small>
+                <!--  <select id="inputState" class="form-control">
+                      <option selected>Choose...</option>
+                      <option>...</option>
+                  </select> -->
+            </div>
+        </div>
+        <div class="text-right">
+            <button type="submit" class="btn btn-outline-primary" *ngIf="modo==='add'">
+                <i class="fa fa-save fa-lg p-2"></i>
+                Guardar
+            </button>
+            <button type="submit" class="btn btn-outline-primary"  *ngIf="modo==='edit'">
+                <i class="fa fa-spinner fa-lg p-2"></i>
+                Actualizar
+            </button>
+        </div>
+    </form>
+</div>

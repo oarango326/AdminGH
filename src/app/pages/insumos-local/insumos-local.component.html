@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="card-body">
+        <div class="form-inline mb-3" *ngIf="almacenes.length!=0">
+            <label  class="col-form-label p-3"> Almacen </label>
+            <select class="form-control"
+                    name="almacenes"
+                    id="almacenes"
+                    #almacenSeleccionado
+                    (change)='cargarInsumos(almacenSeleccionado.value)'>
+                <option *ngFor="let almacen of almacenes; let i = index"
+                        value="{{almacen.almacenId}}">{{almacen.descripcion}}
+                </option>
+            </select>
+
+        </div>
+
+        <table class="table table-striped"  *ngIf="insumos.length>0">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Insumo</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Unidad de Medida</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let insumo of insumos; let i = index" >
+                    <td>{{ i+1}}</td>
+                    <td>{{insumo.insumo.nombreInsumo}}</td>
+                    <td>{{insumo.stockActual}}</td>
+                    <td *ngIf="insumo.insumo.unidadMedida===1"> Unidad</td>
+                    <td *ngIf="insumo.insumo.unidadMedida===2"> Kilogramo</td>
+                    <td *ngIf="insumo.insumo.unidadMedida===3"> Litro</td>
+                    <td *ngIf="insumo.insumo.unidadMedida===4"> Gramos</td>
+                    <td *ngIf="insumo.insumo.unidadMedida===5"> Mililitros</td>
+                </tr>
+            </tbody>
+        </table>
+        <app-norecords *ngIf="!cargando && almacenes.length===0"></app-norecords>
+        <app-loading *ngIf="cargando"></app-loading>
+    </div>
+</div>

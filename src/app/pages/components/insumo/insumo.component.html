@@ -1,0 +1,94 @@
+<div class="card">
+    <div class="card-body">
+        <div [ngClass]="'mb-3'" class="justify-content-between d-flex " >
+            <h2 *ngIf="modo==='edit'">Actualizar Insumo</h2>
+            <h2  *ngIf="modo!='edit'">Nuevo Insumo</h2>
+            <button class="btn btn-outline-danger" routerLink="/insumos" >
+                <i class="fa fa-arrow-left fa-lg p-2"></i><
+                Volver
+            </button>
+        </div>
+    <form autocomplete="off" #form = "ngForm" (ngSubmit)="modo==='edit'? update(form):add(form)">
+        <div class="form-group row" *ngIf="modo==='edit'">
+            <label  class="col-sm-3 col-form-label">ID</label>
+            <div class="col-sm">
+                <input type="text"
+                       class="col-sm form-control "
+                       name="insumoId"
+                       [ngModel]="insumo.insumoId"
+                       disabled>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Descripcion</label>
+            <div class="col-sm">
+                <input type="text"
+                       class="col-sm form-control "
+                       name="nombreInsumo"
+                       [class.is-invalid]="nombreInsumo.invalid && nombreInsumo.touched"
+                       required
+                       minlength="5"
+                       placeholder="Descripcion"
+                       [ngModel]="insumo.nombreInsumo"
+                       #nombreInsumo="ngModel">
+                <small class="text-danger" *ngIf="nombreInsumo.invalid && nombreInsumo.touched"> Debe ingresar una descripcion</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Unidad de Medida</label>
+            <div class="col-sm">
+                <select  id="unidadMedida"
+                         class="col-sm form-control "
+                         name="unidadMedida"
+                         [ngModel]="insumo.unidadMedida"
+                         required
+                         [class.is-invalid]="unidadMedida.invalid && unidadMedida.touched"
+                         #unidadMedida="ngModel">
+                    <option [ngValue]="null" selected disabled >Seleccione una Opcion</option>
+                    <option value="1">Unidad </option>
+                    <option value="2">Kilogramo</option>
+                    <option value="3">Litro</option>
+                </select>
+                <small class="text-danger" *ngIf="unidadMedida.invalid && unidadMedida.touched"> Selecciones una opcion</small>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label">Disp. para Menu</label>
+            <div class="col-sm">
+                <select  id="disponibleMenu"
+                         class="col-sm form-control "
+                         name="disponibleMenu"
+                         required
+                         [class.is-invalid]="disponibleMenu.invalid && disponibleMenu.touched"
+                         [ngModel]="insumo.disponibleMenu"
+                         #disponibleMenu="ngModel">
+                    <option [ngValue]="null" selected disabled >Seleccione una Opcion</option>
+                    <option value="false">No</option>
+                    <option value="true">SI</option>
+                </select>
+                <small class="text-danger" *ngIf="disponibleMenu.invalid && disponibleMenu.touched"> Selecciones una Opcion</small>
+            </div>
+        </div>
+
+        <div class="text-right">
+            <button type="submit" class="btn btn-outline-primary" *ngIf="modo!='edit'">
+                <i class="fa fa-save fa-lg p-2"></i>
+                Guardar
+            </button>
+            <button type="submit" class="btn btn-outline-primary"  *ngIf="modo==='edit'">
+                <i class="fa fa-spinner fa-lg p-2"></i>
+                Actualizar
+            </button>
+        </div>
+    </form>
+</div>
+</div>
+<!--<pre>
+        estado del formulario : {{form.valid}}
+    <br>
+        Estatus:  {{form.status}}
+    </pre>
+<pre>
+    {{form.value| json}}
+    </pre>-->
+

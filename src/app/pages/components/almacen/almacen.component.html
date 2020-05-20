@@ -1,0 +1,74 @@
+<div class="card">
+    <div class="card-body">
+        <div [ngClass]="'mb-3'" class="justify-content-between d-flex " >
+            <h2 *ngIf="modo==='edit'">Actualizar Almacen</h2>
+            <h2  *ngIf="modo!='edit'">Nuevo Almacen</h2>
+            <button class="btn btn-outline-danger" routerLink="/almacenes" >
+                <i class="fa fa-arrow-left fa-lg p-2"></i><
+                Volver
+            </button>
+        </div>
+        <form autocomplete="off" [formGroup]="form" (ngSubmit)="modo==='edit'? update(form):add(form)">
+            <div class="form-group row" *ngIf="modo==='edit'">
+                <label  class="col-sm-3 col-form-label">ID</label>
+                <div class="col-sm">
+                    <input type="text"
+                           class="col-sm form-control "
+                           name="almacenId"
+                           formControlName="almacenId"
+                           readonly>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Descripcion</label>
+                <div class="col-sm">
+                    <input type="text"
+                           class="col-sm form-control "
+                           name="descripcion"
+                           required
+                           minlength="5"
+                           [class.is-invalid]="descripcionLocal"
+                           placeholder="Descripcion"
+                           formControlName="descripcion">
+                    <small class="text-danger" *ngIf="descripcionLocal"> Debe ingresar una descripción valida min. 5 caracteres</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Local</label>
+                <div class="col-sm">
+                    <select  id="local"
+                             class="col-sm form-control "
+                             name="local"
+                             required
+                             [class.is-invalid]="almacenlocalId"
+                             formControlName="localId">
+                        <option [ngValue]="" selected disabled >Seleccione una Opcion</option>
+                        <option *ngFor="let local of locales; let i = index"
+                                value="{{local.localId}}">{{local.nombreLocal}}
+                        </option>
+                    </select>
+                    <small class="text-danger" *ngIf="almacenlocalId"> Debe seleccionar un local</small>
+                </div>
+            </div>
+            <div class="text-right">
+                <button type="submit" class="btn btn-outline-primary" *ngIf="modo!='edit'">
+                    <i class="fa fa-save fa-lg p-2"></i>
+                    Guardar
+                </button>
+                <button type="submit" class="btn btn-outline-primary"  *ngIf="modo==='edit'">
+                    <i class="fa fa-spinner fa-lg p-2"></i>
+                    Actualizar
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<!--<pre>
+        estado del formulario : {{form.valid}}
+    <br>
+        Estatus:  {{form.status}}
+    </pre>
+<pre>
+    {{form.value| json}}
+    </pre>-->
+
