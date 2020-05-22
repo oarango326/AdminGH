@@ -11,6 +11,7 @@ import {FormsModule} from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { registerLocaleData } from '@angular/common';
 import localEs from '@angular/common/locales/es';
+
 registerLocaleData(localEs);
 
 @NgModule({

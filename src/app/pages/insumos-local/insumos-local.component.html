@@ -28,7 +28,7 @@
                 <tr *ngFor="let insumo of insumos; let i = index" >
                     <td>{{ i+1}}</td>
                     <td>{{insumo.insumo.nombreInsumo}}</td>
-                    <td>{{insumo.stockActual}}</td>
+                    <td>{{insumo.stockActual | number:'.0-2'}}</td>
                     <td *ngIf="insumo.insumo.unidadMedida===1"> Unidad</td>
                     <td *ngIf="insumo.insumo.unidadMedida===2"> Kilogramo</td>
                     <td *ngIf="insumo.insumo.unidadMedida===3"> Litro</td>

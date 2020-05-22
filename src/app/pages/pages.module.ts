@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // componentes
 import {PagesComponent} from './pages.component';
 
@@ -35,6 +36,7 @@ import { ComandasComponent } from './comandas/comandas.component';
 import { InsumosLocalComponent } from './insumos-local/insumos-local.component';
 import {NgbModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import { CompraComponent } from './components/compra/compra.component';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -72,15 +74,17 @@ import { CompraComponent } from './components/compra/compra.component';
       MesasComponent,
       CajasComponent
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    PAGES_ROUTES,
-    ReactiveFormsModule,
-    FormsModule,
-    NgbTooltipModule,
-    NgbModule
-  ],
+    imports: [
+        CommonModule,
+        SharedModule,
+        PAGES_ROUTES,
+        ReactiveFormsModule,
+        FormsModule,
+        NgbTooltipModule,
+        NgbModule,
+        BrowserAnimationsModule,
+        BsDatepickerModule.forRoot()
+    ],
   providers: [
   ],
 })

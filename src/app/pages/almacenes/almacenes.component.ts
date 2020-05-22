@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AlmacenModel} from '../../models/Almacen.model';
 import {AlmacenesService} from '../../services/almacenes/almacenes.service';
-import {InsumoModel} from '../../models/Insumo.model';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-almacenes',

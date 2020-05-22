@@ -65,12 +65,14 @@
                     <label class="col-4 col-form-label"># Mesa </label>
                     <div>
                         <input class="form-control"
-                               type="text"
+                               type="number"
                                name="numeroMesa"
                                placeholder="#"
                                [class.is-invalid]="numeroMesa.invalid && numeroMesa.touched"
                                [ngModel]="mesa.numeroMesa"
                                required
+                               min="1"
+                               max="99"
                                maxlength="2"
                                #numeroMesa="ngModel">
                         <small *ngIf="numeroMesa.invalid && numeroMesa.touched"
@@ -81,12 +83,14 @@
                     <label class="col-4 col-form-label"># Plazas </label>
                     <div>
                         <input class="form-control"
-                               type="text"
+                               type="number"
                                name="numeroPlazas"
                                placeholder="#"
                                [class.is-invalid]="numeroPlazas.invalid && numeroPlazas.touched"
                                [ngModel]="mesa.numeroPlazas"
                                required
+                               min="1"
+                               max="99"
                                maxlength="2"
                                #numeroPlazas="ngModel">
                         <small *ngIf="numeroPlazas.invalid && numeroPlazas.touched"

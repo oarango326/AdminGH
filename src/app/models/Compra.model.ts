@@ -12,6 +12,11 @@ export class CompraModel{
     proveedorId: number;
     proveedor: ProveedorModel;
     localId: number;
+    almacenId: number;
     local: LocalModel;
     compraDetalle: CompraDetalleModel[];
+
+    constructor() {
+        this.estadoCompra = 'pendiente';
+    }
 }

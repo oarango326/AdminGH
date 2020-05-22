@@ -54,6 +54,8 @@ const pagesRoutes: Routes = [
             { path: 'compras', component: ComprasComponent, data: {titulo: 'Compras'}  },
             { path: 'compras/nuevo-compra', component: CompraComponent,
                 data: {titulo: 'Compras', titulo2: 'Nueva-Compra'}  },
+            { path: 'compras/:id/edit', component: CompraComponent,
+                data: {titulo: 'Compras', titulo2: 'Editar-Compra'}   },
             // compras
             { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
         ]

@@ -23,7 +23,10 @@ export class ComprasComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  delete(insumo: any, i: number) {
-
+  delete(compra: CompraModel, i: number) {
+    this.comprasService.delete(compra.compraId)
+        .subscribe(resp => console.log,
+                error => console.log(error));
+    this.compras.splice(i, 1);
   }
 }
