@@ -10,6 +10,7 @@ import {filter, map} from 'rxjs/operators';
 export class BreadcrumsComponent implements OnInit {
   titulo: string;
   titulo2: string;
+  titulo3: string;
 
   constructor(private router: Router) {
     this.router.events
@@ -21,6 +22,7 @@ export class BreadcrumsComponent implements OnInit {
         .subscribe((resp: any) => {
           this.titulo = resp.titulo;
           this.titulo2 = resp.titulo2;
+          this.titulo3 = resp.titulo3;
         });
   }
   ngOnInit(): void {

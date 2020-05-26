@@ -17,6 +17,8 @@ import {ProveedorComponent} from './components/proveedor/proveedor.component';
 import {AlmacenComponent} from './components/almacen/almacen.component';
 import {ComprasComponent} from './compras/compras.component';
 import {CompraComponent} from './components/compra/compra.component';
+import {PlatosComponent} from './platos/platos.component';
+import {PlatoComponent} from './components/plato/plato.component';
 
 
 const pagesRoutes: Routes = [
@@ -32,6 +34,9 @@ const pagesRoutes: Routes = [
                     { path: 'info-local', component: LocalComponent, data: {titulo: 'Locales', titulo2: 'Informacion'}},
                     { path: 'mesas', component: MesasComponent, data: {titulo: 'Locales', titulo2: 'Mesas'}},
                     { path: 'cajas', component: CajasComponent, data: {titulo: 'Locales', titulo2: 'Cajas'}},
+                    { path: 'platos', component: PlatosComponent, data: {titulo: 'Locales', titulo2: 'Platos'}},
+                    { path: 'platos/nuevo-plato', component: PlatoComponent,
+                        data: {titulo: 'Locales', titulo2: 'Platos', titulo3: 'Nuevo-Plato'}  },
                     { path: 'insumos', component: InsumosLocalComponent, data: {titulo: 'Locales', titulo2: 'Insumos'}},
                     {path: '', pathMatch: 'full', redirectTo: 'info-local'},
                     {path: '**', pathMatch: 'full', redirectTo: 'info-local'}

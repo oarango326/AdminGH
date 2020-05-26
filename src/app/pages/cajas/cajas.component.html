@@ -58,11 +58,11 @@
                            #cajaId="ngModel">
                 </div>
             </div>
-            <div>
+            <div class="form-group row">
                 <label class="col-4 col-form-label"># Caja </label>
                 <div>
                     <input class="form-control"
-                           type="text"
+                           type="number"
                            name="numeroCaja"
                            placeholder="#"
                            [class.is-invalid]="numeroCaja.invalid && numeroCaja.touched"
@@ -71,7 +71,7 @@
                            maxlength="2"
                            #numeroCaja="ngModel">
                     <small *ngIf="numeroCaja.invalid && numeroCaja.touched"
-                           class="form-text text-danger">Ingrese 1 numero</small>
+                           class="form-text text-danger">Ingrese un numero</small>
                 </div>
             </div>
             <div class="form-group row">

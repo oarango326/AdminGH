@@ -164,7 +164,7 @@
                     <button class="btn btn-outline-success mb-2" type="button" (click)="addCompraDetalle()"><i class="fas fa-plus"></i> Agregar Linea</button>
                 </div>
                 <div class=" form-row justify-content-end">
-                    <button class="btn btn-outline-primary mb-2" type="submit" ><i class="fas fa-save"></i> Guardar</button>
+                    <button class="btn btn-outline-primary mb-2" type="submit" *ngIf="modo==='add'" ><i class="fas fa-save"></i> Guardar</button>
                 </div>
             </form>
     </div>

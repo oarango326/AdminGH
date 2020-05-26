@@ -37,6 +37,8 @@ import { InsumosLocalComponent } from './insumos-local/insumos-local.component';
 import {NgbModule, NgbTooltipModule} from '@ng-bootstrap/ng-bootstrap';
 import { CompraComponent } from './components/compra/compra.component';
 import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
+import { PlatoComponent } from './components/plato/plato.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
     PagosComponent,
     ComandasComponent,
     InsumosLocalComponent,
-    CompraComponent
+    CompraComponent,
+    PlatoComponent,
+    MenuComponent
   ],
   exports: [
     PagesComponent,

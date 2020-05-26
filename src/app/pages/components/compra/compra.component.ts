@@ -39,13 +39,14 @@ export class CompraComponent implements OnInit {
                private comprasService: ComprasService, private ar: ActivatedRoute) {
 
 
-              this.crearFormulario();
+
               this.cargarProveedores();
               this.cargarInsumos();
               this.cargaLocales();
               this.setDatepickerLanguage();
               this.bsConfig = Object.assign({}, {containerClass: 'theme-default'});
               this.modo = 'add';
+              this.crearFormulario();
               this.ar.url.subscribe(params => {
                 if ( params.length === 3){
                   this.modo = params[2].path;
